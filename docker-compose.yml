@@ -30,9 +30,6 @@ services:
       - DB_PASSWORD=$MYSQLDB_ROOT_PASSWORD
       - DB_NAME=$MYSQLDB_DATABASE
       - DB_PORT=$MYSQLDB_DOCKER_PORT
-      - REDIS_HOST=$REDIS_HOST
-      - REDIS_PORT=$REDIS_PORT
-      - REDIS_PASSWORD=$REDIS_PASSWORD
     stdin_open: true
     tty: true
   dgraph-standalone:

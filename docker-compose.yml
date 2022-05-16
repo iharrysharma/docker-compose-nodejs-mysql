@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   mysqldb:
+    container_name: mysql
     image: mysql:5.7
     restart: unless-stopped
     env_file: ./.env
@@ -13,8 +14,10 @@ services:
     volumes:
       - db:/var/lib/mysql
   app:
+    container_name: node-app
     depends_on:
       - mysqldb
+      - dgraph-standalone
     build: ./bezkoder-app
     restart: unless-stopped
     env_file: ./.env
@@ -29,6 +32,7 @@ services:
     stdin_open: true
     tty: true
   dgraph-standalone:
+    container_name: dgraph
     image: dgraph/standalone:latest
     volumes:
       - /tmp/data:/dgraph

@@ -47,6 +47,7 @@ services:
   cache:
     container_name: redis
     image: redis:6.2-alpine
+    command: --port REDIS_LOCAL_PORT
     restart: always
     ports:
       - $REDIS_LOCAL_PORT:$REDIS_DOCKER_PORT

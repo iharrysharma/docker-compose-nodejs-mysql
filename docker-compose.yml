@@ -28,6 +28,17 @@ services:
       - DB_PORT=$MYSQLDB_DOCKER_PORT
     stdin_open: true
     tty: true
+  dgraph-standalone:
+    image: dgraph/standalone:latest
+    volumes:
+      - /tmp/data:/dgraph
+    ports:
+      - 5080:5080
+      - 6080:6080
+      - 8080:8080
+      - 9080:9080
+      - 8000:8000
+    command: dgraph zero --my=zero:5080
 
 volumes: 
   db:
